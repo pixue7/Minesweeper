@@ -89,7 +89,6 @@ public void mousePressed(){
      }
 }
 public void draw(){
-  background(0);
   if(isWon()){
   displayWinningMessage();
   if(flagged){
