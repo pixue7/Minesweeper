@@ -8,8 +8,8 @@ void setup(){
     textAlign(CENTER,CENTER);
     Interactive.make(this);
     buttons = new MSButton[numRows][numCols];
-    for (int j = 0; j < numRows; j++){
-    for (int i = 0; i < numCols; i++){
+    for(int j = 0; j < numRows; j++){
+    for(int i = 0; i < numCols; i++){
     setMines();
     }
     }
