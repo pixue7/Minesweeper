@@ -8,9 +8,11 @@ void setup(){
     textAlign(CENTER,CENTER);
     Interactive.make(this);
     buttons = new MSButton[numRows][numCols];
-    for (int j = 0; j < numRows; j++)
-    for (int i = 0; i < numCols; i++)
+    for (int j = 0; j < numRows; j++){
+    for (int i = 0; i < numCols; i++){
     setMines();
+    }
+    }
 }
 public void setMines(){
     for(int n = 0; n < 40; n++){
@@ -21,11 +23,7 @@ public void setMines(){
     }
   }
 }                   
-public void draw(){
-  background(0);
-  if(isWon())
-  displayWinningMessage();
-}
+
 public boolean isWon(){
   return false;
 }
@@ -71,7 +69,7 @@ public void mousePressed(){
       else if(countMines(myRow, myCol) > 0){
       setLabel("" + countMines());
       }
-      else{
+     else{
      for(int i = -1; i <=1; i++){
      if(isValid(myRow-1, myCol+i)){
      mines[myRow-1][myCol+i].mousePressed();
@@ -84,13 +82,19 @@ public void mousePressed(){
      if(isValid(myRow, myCol+1)){
      mines[myRow][myCol+1].mousePressed();
      }
+     }
      if(isValid(myRow, myCol-1)){
      mines[myRow][myCol-1].mousePressed();
      }
-   }
+     }
+}
 public void draw(){
+  background(0);
+  if(isWon()){
+  displayWinningMessage();
   if(flagged){
   fill(0);
+  }
   }
   else if(clicked && mines.contains(this)){
   fill(255,0,0);
@@ -103,6 +107,7 @@ public void draw(){
   rect(x, y, width, height);
   fill(0);
   text(myLabel, x+width/2, y+height/2);
+  }
   }
 }
 public void setLabel(String newLabel){
@@ -125,13 +130,14 @@ public int countMines(int row, int col){
     numMines++;
     }
     }
+    }
     for(int i = -1; i <=1; i++){
     if(isValid(row+1, col+i)){
     if(mines.contains(buttons[row+1][col+i])){
     numMines++;
     }
     }
-    
+    }
     if(isValid(row, col+1)){
     if(mines.contains(buttons[row][col+1])){
     numMines++;
@@ -142,8 +148,5 @@ public int countMines(int row, int col){
     numMines++;
     }
     }
-    }
     return numMines;
-    }
   }
-}
