@@ -13,11 +13,12 @@ void setup(){
     setMines();
 }
 public void setMines(){
-    for(int n = 0; n < 40; n++)
+    for(int n = 0; n < 40; n++){
     int j = (int)(Math.random()*numRows);
     int i = (int)(Math.random()*numCols);
     if(!mines.contains(buttons[j][i])){
     mines.add(buttons[j][i]); 
+    }
   }
 }                   
 public void draw(){
@@ -79,12 +80,12 @@ public void mousePressed(){
      for(int i = -1; i <=1; i++){
      if(isValid(myRow+1, myCol+i)){
      mines[myRow+1][myCol+i].mousePressed();
+     }
      if(isValid(myRow, myCol+1)){
      mines[myRow][myCol+1].mousePressed();
+     }
      if(isValid(myRow, myCol-1)){
      mines[myRow][myCol-1].mousePressed();
-     }
-     }
      }
    }
 public void draw(){
@@ -124,14 +125,13 @@ public int countMines(int row, int col){
     numMines++;
     }
     }
-    }
     for(int i = -1; i <=1; i++){
     if(isValid(row+1, col+i)){
     if(mines.contains(buttons[row+1][col+i])){
     numMines++;
     }
     }
-    }
+    
     if(isValid(row, col+1)){
     if(mines.contains(buttons[row][col+1])){
     numMines++;
@@ -142,6 +142,8 @@ public int countMines(int row, int col){
     numMines++;
     }
     }
+    }
     return numMines;
+    }
   }
 }
